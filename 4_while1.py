@@ -14,8 +14,10 @@ def hello_user():
     """
     Замените pass на ваш код
     """
-    pass
-
+    message = ' '
+    while "хорошо" not in message:
+        message = input("Как дела?\n").lower()
+    print("Так держать!")
     
 if __name__ == "__main__":
     hello_user()
