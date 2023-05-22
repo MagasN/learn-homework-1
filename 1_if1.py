@@ -14,9 +14,9 @@
 
 """
 
-def type_activity(age_user):
+def get_life_period(age_user):
     """
-    Эта функция, определяющая по возрасту, чем должен заниматься пользователь
+    Эта функция определяет по возрасту, чем должен заниматься пользователь.
     """
     if 3 <= age_user <= 6:
         return "Вы должны ходить в детский сад."
@@ -35,7 +35,7 @@ def main():
     В ней надо заменить pass на ваш код
     """
     age_user = int(input("Укажите свой возраст: "))
-    result_func = type_activity(age_user)
+    result_func = get_life_period(age_user)
     print(result_func)   
 
 if __name__ == "__main__":
