@@ -40,19 +40,19 @@ def talk_to_me(update, context):
 
 def planet_stars(update, context):
     print("Вызван /planet")
+    user_message = update.message.text.split()
     
-    try:       
-        planet_user = update.message.text.split()[1].capitalize()
-            
+    if len(user_message) < 2:
+        message_to_user = ("Введи, например, /planet Venus, а я скажу в каком созвездии сегодня находится планета.")
+        update.message.reply_text(message_to_user)
+    else:  
+        planet_user = user_message[1].capitalize()
+                
         if hasattr(ephem, planet_user):
             name_planet = getattr(ephem, planet_user)(datetime.now())  # 
             update.message.reply_text(f'{planet_user} в созвездии {ephem.constellation(name_planet)[1]}')
         else:
             update.message.reply_text("К сожалению, я не знаю такой планеты. Попробуй еще раз.")
-    
-    except IndexError:
-        message_to_user = "Введи, например, /planet Venus, а я скажу в каком созвездии сегодня находится планета."
-        update.message.reply_text(message_to_user)
 
 def main():
     mybot = Updater(settings.API_KEY)
